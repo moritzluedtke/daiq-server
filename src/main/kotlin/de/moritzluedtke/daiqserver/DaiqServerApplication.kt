@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class DaiqServerApplication
 
 fun main(args: Array<String>) {
-	runApplication<DaiqServerApplication>(*args)
+    runApplication<DaiqServerApplication>(*args)
 }
