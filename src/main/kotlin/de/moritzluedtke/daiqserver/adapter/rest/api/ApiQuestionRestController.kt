@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/question")
 @CrossOrigin(origins = ["http://localhost:4200"])
-class ApiRestController(private val questionService: QuestionService) {
+class ApiQuestionRestController(private val questionService: QuestionService) {
 
     @GetMapping
     fun getCurrentQuestion(): Question {
