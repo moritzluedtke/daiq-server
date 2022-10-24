@@ -8,13 +8,14 @@ class QuestionService {
 
     fun getCurrentQuestion(): Question {
         return Question(
-            question = "Für welche Rolle ist Richard Dean Anderson noch bekannt, außer für Sgt. Jack O'Neill",
-            mapOf(
+            question = "Für welche Rolle ist Richard Dean Anderson noch bekannt, außer für Sgt. Jack O'Neill?",
+            answers = mapOf(
                 "A" to "MacGyver",
                 "B" to "Darth Vader",
                 "C" to "Spiderman",
                 "D" to "Richard Castle"
-            )
+            ),
+            correctAnswer = "A"
         )
     }
 }
