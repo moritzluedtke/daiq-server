@@ -6,16 +6,13 @@ import org.springframework.stereotype.Service
 @Service
 class QuestionService {
 
-    fun getCurrentQuestion(): Question {
-        return Question(
-            question = "Für welche Rolle ist Richard Dean Anderson noch bekannt, außer für Sgt. Jack O'Neill?",
-            answers = mapOf(
-                "A" to "MacGyver",
-                "B" to "Darth Vader",
-                "C" to "Spiderman",
-                "D" to "Richard Castle"
-            ),
-            correctAnswer = "A"
-        )
+    var question: Question? = null
+
+    fun getCurrentQuestion(): Question? {
+        return question
+    }
+
+    fun saveQuestion(question: Question) {
+        this.question = question
     }
 }
