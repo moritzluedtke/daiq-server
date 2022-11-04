@@ -11,10 +11,13 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/answers")
 @CrossOrigin(origins = ["http://localhost:4200"])
-class ApiAnswerRestController(private val answerService: AnswerService) {
+class ApiAnswerRestController(
+    private val answerService: AnswerService
+) {
 
     @PostMapping
     fun saveChosenAnswer(@RequestBody userAnswer: UserAnswer) {
         answerService.saveUserAnswer(userAnswer)
+        answerService.publishUserAnswers()
     }
 }

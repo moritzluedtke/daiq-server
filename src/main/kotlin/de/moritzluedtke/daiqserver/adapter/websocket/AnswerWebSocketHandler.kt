@@ -8,7 +8,7 @@ import org.springframework.web.socket.handler.TextWebSocketHandler
 import java.util.Collections
 
 @Component
-class WebSocketHandler : TextWebSocketHandler() {
+class AnswerWebSocketHandler : TextWebSocketHandler() {
     var webSocketSessions: MutableList<WebSocketSession> = Collections.synchronizedList(ArrayList())
 
     override fun afterConnectionEstablished(session: WebSocketSession) {
@@ -28,7 +28,7 @@ class WebSocketHandler : TextWebSocketHandler() {
         }
     }
 
-    fun publishMessage(message: WebSocketMessage<*>) {
+    fun publishAllAnswers(message: WebSocketMessage<*>) {
         for (webSocketSession in webSocketSessions) {
             webSocketSession.sendMessage(message)
         }

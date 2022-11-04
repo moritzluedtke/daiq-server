@@ -1,7 +1,7 @@
 package de.moritzluedtke.daiqserver.adapter.rest
 
 import com.google.gson.Gson
-import de.moritzluedtke.daiqserver.adapter.websocket.WebSocketHandler
+import de.moritzluedtke.daiqserver.adapter.websocket.RevealAnswerWebSocketHandler
 import de.moritzluedtke.daiqserver.model.Question
 import de.moritzluedtke.daiqserver.model.RevealAnswerDto
 import de.moritzluedtke.daiqserver.service.QuestionService
@@ -18,7 +18,7 @@ import org.springframework.web.socket.TextMessage
 @CrossOrigin(origins = ["http://localhost:4200"])
 class AdminRestController(
     private val questionService: QuestionService,
-    private val webSocketHandler: WebSocketHandler
+    private val revealAnswerWebSocketHandler: RevealAnswerWebSocketHandler
 ) {
 
     private val gson = Gson()
@@ -36,7 +36,7 @@ class AdminRestController(
     @PostMapping("/reveal-correct-answer")
     fun revealCorrectAnswer() {
         val currentQuestion = questionService.getCurrentQuestion()
-        webSocketHandler.publishMessage(
+        revealAnswerWebSocketHandler.publishMessage(
             TextMessage(
                 gson.toJson(
                     RevealAnswerDto(

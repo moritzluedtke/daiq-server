@@ -1,6 +1,6 @@
 package de.moritzluedtke.daiqserver.model
 
-class UserAnswer(
-    val username: String,
+class Player(
+    val name: String,
     val chosenAnswer: String
 )
