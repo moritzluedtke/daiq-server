@@ -11,7 +11,7 @@ class AnswerService(
     private val answerWebSocketHandler: AnswerWebSocketHandler
 ) {
     private val gson = Gson()
-    var answers = mutableMapOf<String, String>()
+    private var answers = mutableMapOf<String, String>() // map enforces that there are no duplicate users
 
     fun saveUserAnswer(userAnswer: UserAnswer) {
         answers[userAnswer.username] = userAnswer.chosenAnswer
@@ -25,5 +25,9 @@ class AnswerService(
                 )
             )
         )
+    }
+
+    fun getUserAnswers(): List<UserAnswer> {
+        return answers.map { entry -> UserAnswer(entry.key, entry.value) }.toList()
     }
 }

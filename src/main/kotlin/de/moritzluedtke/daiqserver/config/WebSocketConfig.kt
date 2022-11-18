@@ -15,7 +15,7 @@ class WebSocketConfig(
 ) : WebSocketConfigurer {
 
     override fun registerWebSocketHandlers(registry: WebSocketHandlerRegistry) {
-        registry.addHandler(revealAnswerHandler, "/socket").setAllowedOrigins("*")
+        registry.addHandler(revealAnswerHandler, "/reveal-answers").setAllowedOrigins("*")
         registry.addHandler(answerWebSocketHandler, "/answers").setAllowedOrigins("*")
     }
 }

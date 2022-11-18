@@ -4,6 +4,8 @@ import com.google.gson.Gson
 import de.moritzluedtke.daiqserver.adapter.websocket.RevealAnswerWebSocketHandler
 import de.moritzluedtke.daiqserver.model.Question
 import de.moritzluedtke.daiqserver.model.RevealAnswerDto
+import de.moritzluedtke.daiqserver.model.UserAnswer
+import de.moritzluedtke.daiqserver.service.AnswerService
 import de.moritzluedtke.daiqserver.service.QuestionService
 import org.springframework.web.bind.annotation.CrossOrigin
 import org.springframework.web.bind.annotation.GetMapping
@@ -18,6 +20,7 @@ import org.springframework.web.socket.TextMessage
 @CrossOrigin(origins = ["http://localhost:4200"])
 class AdminRestController(
     private val questionService: QuestionService,
+    private val answerService: AnswerService,
     private val revealAnswerWebSocketHandler: RevealAnswerWebSocketHandler
 ) {
 
@@ -46,5 +49,10 @@ class AdminRestController(
                 )
             )
         )
+    }
+
+    @GetMapping("/user-answers")
+    fun getPlayers(): List<UserAnswer> {
+        return answerService.getUserAnswers()
     }
 }
